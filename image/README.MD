@@ -1,0 +1,1 @@
+<img src="image/get-info-os.png" alt="Image" width="500" height="600"> 
