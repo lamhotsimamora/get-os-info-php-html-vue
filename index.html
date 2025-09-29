@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hardware Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+  <div id="app" class="container mx-auto p-6">
+    <h1 class="text-3xl font-bold text-center mb-6">📊 Hardware Monitor</h1>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      
+      <!-- CPU -->
+      <div class="bg-white shadow-md rounded-xl p-3 text-center">
+        <h2 class="text-lg font-semibold mb-2">CPU Usage</h2>
+        <canvas id="cpuChart"  class="w-32 h-20 mx-auto"></canvas>
+        <p class="mt-2 text-center">{{ system.cpu.model }}</p>
+      </div>
+
+      <!-- RAM -->
+      <div class="bg-white rounded-2xl shadow p-4">
+        <h2 class="text-lg font-semibold mb-2">RAM Usage</h2>
+        <canvas id="ramChart"  class="w-32 h-20 mx-auto"></canvas>
+        <p class="mt-2 text-center">{{ system.ram.total }} GB Installed</p>
+      </div>
+
+      <!-- GPU -->
+      <div class="bg-white rounded-2xl shadow p-4">
+        <h2 class="text-lg font-semibold mb-2">GPU Usage</h2>
+        <canvas id="gpuChart"  class="w-32 h-20 mx-auto"></canvas>
+        <p class="mt-2 text-center">{{ system.gpu.model }}</p>
+      </div>
+
+      <!-- Disk -->
+      <div class="bg-white rounded-2xl shadow p-4">
+        <h2 class="text-lg font-semibold mb-2">Disk Usage</h2>
+        <canvas id="diskChart"  class="w-32 h-20 mx-auto"></canvas>
+        <p class="mt-2 text-center">{{ system.disk.type }} - {{ system.disk.total }} GB</p>
+      </div>
+
+      <!-- OS -->
+      <div class="bg-white rounded-2xl shadow p-4 col-span-1 md:col-span-2 lg:col-span-3">
+        <h2 class="text-lg font-semibold mb-2">System Info</h2>
+        <table class="table-auto w-full text-left border">
+          <tbody>
+            <tr><th class="border px-2 py-1">Operating System</th><td class="border px-2 py-1">{{ system.os }}</td></tr>
+            <tr><th class="border px-2 py-1">CPU</th><td class="border px-2 py-1">{{ system.cpu.model }}</td></tr>
+            <tr><th class="border px-2 py-1">RAM</th><td class="border px-2 py-1">{{ system.ram.used }} / {{ system.ram.total }} GB</td></tr>
+            <tr><th class="border px-2 py-1">GPU</th><td class="border px-2 py-1">{{ system.gpu.model }}</td></tr>
+            <tr><th class="border px-2 py-1">Disk</th><td class="border px-2 py-1">{{ system.disk.used }} / {{ system.disk.total }} GB</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
